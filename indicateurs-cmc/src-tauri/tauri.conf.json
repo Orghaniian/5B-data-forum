@@ -59,7 +59,8 @@
         "height": 600,
         "resizable": true,
         "title": "Indicateurs CMC",
-        "width": 800
+        "width": 800,
+        "minHeight": 800
       }
     ]
   }

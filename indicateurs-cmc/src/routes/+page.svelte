@@ -1,12 +1,15 @@
 <script lang="ts">
-	import "carbon-components-svelte/css/all.css";
+	import "carbon-components-svelte/css/all.css"
 	import data from'$lib/assets/indicateurs.json'
-	import '@carbon/styles/css/styles.css';
-	import '@carbon/charts/styles.css';
+	import '@carbon/styles/css/styles.css'
+	import '@carbon/charts/styles.css'
 	import Chart from '$lib/Chart.svelte'
 
-	import { DataTable, Theme } from "carbon-components-svelte"
-	import { BarChartSimple } from "@carbon/charts-svelte";
+	import { DataTable, Theme, ExpandableTile } from "carbon-components-svelte"
+
+	//TODO change title bar and scrollbar style
+	//TODO set min window size
+	//TODO lazy load indicators
 
 	let theme = "g90";
 </script>
@@ -16,8 +19,13 @@
 <br>
 <br>
 <br>
-<DataTable
-	headers={[
+
+<ExpandableTile>
+	<h2 slot='above'>Proposition d'indicateur initiale</h2>
+	<div slot='below'>
+		<br>
+		<DataTable
+			headers={[
     { key: "name", value: "Indicateurs" },
     { key: "what", value: "Quoi" },
     { key: "forWho", value: "Pour qui" },
@@ -25,7 +33,7 @@
     { key: "visu", value: "Visualisation" },
     { key: "visuDescription", value: "Exemple visuel" },
   ]}
-	rows={[
+			rows={[
     {
 			name: "Activité par utilisateur",
 			what: "Activité des utilisateurs, affichée par utilisateur sur une période donnée",
@@ -35,7 +43,9 @@
 			visuDescription: "Un graphique avec en abscisse le temps et en ordonné une valeur d’activité pondérée à partir des messages envoyés, messages vus, de la fréquence de connexion, des réponses/citations/etc.",
     }
   ]}
-/>
+		/>
+	</div>
+</ExpandableTile>
 
 <style>
 	:global(*) {

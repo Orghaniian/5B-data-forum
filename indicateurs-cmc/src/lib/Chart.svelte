@@ -38,7 +38,7 @@
 			}
 		},
 		curve: "curveMonotoneX",
-		height: "400px",
+		height: "600px",
 		animations:true,
 		theme: ChartTheme.G90,
 		resizable: true,
