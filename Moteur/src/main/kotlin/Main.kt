@@ -5,6 +5,7 @@ import java.io.File
 import kotlinx.serialization.json.*
 import model.Trace
 import indicateur.Result
+import java.util.*
 
 private val json = Json { prettyPrint = true }
 private const val defaultOuputFileName = "indicateurs.json"
@@ -28,14 +29,14 @@ fun main() {
 
     if(output.extension == "") output = File(output.name + ".json")
 
-    json.encodeToStream(result, output.outputStream())
+    json.encodeToStream(result, output.outputStream())//26976 lines
 }
 
-fun processData(data: List<Trace>) : Result {
+fun processData(data: List<Trace>): Result {
     val result = Result(mutableListOf(), mutableMapOf())
     data.forEach{ trace ->
         result.indicateurs.getOrPut(trace.user) { mutableListOf() }.also { activities ->
-            activities.find { it.date == trace.date }?.let {
+            activities.find { it.date.isSameDay(trace.date) }?.let {
                 it.value++
             } ?: activities.add(Activity(trace.date, 1))
         }
@@ -59,3 +60,12 @@ fun processData(data: List<Trace>) : Result {
 }
 
 fun String.trimQuotes() = replace(Regex("^\"|\"$"), "")
+
+fun Date.isSameDay(other: Date): Boolean {
+    val cal1 = Calendar.getInstance().also { it.time = this }
+    val cal2 = Calendar.getInstance().also { it.time = other }
+
+    return  cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR)
+            &&
+            cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
+}

@@ -11,6 +11,7 @@
       <change beforePath="$PROJECT_DIR$/../Moteur/.gradle/7.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Moteur/.gradle/7.6/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Moteur/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Moteur/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Moteur/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Moteur/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Moteur/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Moteur/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Moteur/build/classes/kotlin/main/MainKt$processData$lambda$7$$inlined$sortBy$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Moteur/build/classes/kotlin/main/MainKt$processData$lambda$7$$inlined$sortBy$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Moteur/build/classes/kotlin/main/MainKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Moteur/build/classes/kotlin/main/MainKt.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Moteur/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab" beforeDir="false" afterPath="$PROJECT_DIR$/../Moteur/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab" afterDir="false" />
@@ -41,7 +42,8 @@
       <change beforePath="$PROJECT_DIR$/../Moteur/build/kotlin/compileKotlin/cacheable/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Moteur/build/kotlin/compileKotlin/cacheable/last-build.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Moteur/build/kotlin/compileKotlin/local-state/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Moteur/build/kotlin/compileKotlin/local-state/build-history.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Moteur/build/libs/Moteur-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Moteur/build/libs/Moteur-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Moteur/indicateurs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Moteur/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Moteur/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
