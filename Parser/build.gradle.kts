@@ -22,6 +22,8 @@ dependencies {
     implementation("mysql", "mysql-connector-java","8.0.19")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
 
+    implementation("com.github.ajalt.clikt:clikt:3.5.0")
+
     testImplementation(kotlin("test"))
 }
 

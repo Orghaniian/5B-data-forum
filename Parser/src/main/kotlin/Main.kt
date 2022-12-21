@@ -1,3 +1,4 @@
+
 import kotlinx.serialization.ExperimentalSerializationApi
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
@@ -9,39 +10,46 @@ import java.time.ZoneId
 import java.util.*
 import kotlinx.serialization.json.*
 import java.io.File
+import com.github.ajalt.clikt.core.CliktCommand
+import com.github.ajalt.clikt.core.UsageError
 
 private val json = Json { prettyPrint = true }
 
 @OptIn(ExperimentalSerializationApi::class)
-fun main(args: Array<String>) {
-    val url = if(args.size == 1){
-        "jdbc:mysql://${args.first()}"
-    } else {
-        print("Default address selected: localhost:3306/traceforumsql")
-        print("to specify the database address give it as first argument")
-        print("Following this pattern '<address>:<port>/<databaseName>'")
-        "jdbc:mysql://localhost:3306/traceforumsql"
-    }
-    Database.connect(url, user = "root", driver = "com.mysql.cj.jdbc.Driver")
+fun main(args: Array<String>) = object: CliktCommand() {
+    override fun run() {
+        println("Database connexion informations")
+        val hostname = prompt("Hostname", "localhost")
+        val port = prompt("Port", "3306") {
+            if(!it.all(Char::isDigit)) throw UsageError("The port can only contains digits")
+            else it
+        }
+        val databaseName = prompt("Database Name", "traceforumsql")
+        val user = prompt("Username", "root")
+        val password = prompt("Password", "")
 
-    val results = transaction {
-        Transitions.slice(Transitions.date, Transitions.time, Transitions.title, Transitions.user).select(
-            Transitions.title eq "Connexion"
-                or (Transitions.title eq "Poster un nouveau message")
-                or (Transitions.title eq "Répondre à un message")
-        ).map { row ->
-            Trace(
-                row[Transitions.user],
-                Date.from(LocalDateTime.of(row[Transitions.date], row[Transitions.time]).atZone(ZoneId.systemDefault()).toInstant()),
-                Type.fromString(row[Transitions.title])
-            )
+        val url = "jdbc:mysql://$hostname:$port/$databaseName"
+
+        println("Connecting to $url")
+        Database.connect(url, user = user!!, password = password ?: "", driver = "com.mysql.cj.jdbc.Driver")
+        val results = transaction {
+            Transitions.slice(Transitions.date, Transitions.time, Transitions.title, Transitions.user).select(
+                Transitions.title eq "Connexion"
+                        or (Transitions.title eq "Poster un nouveau message")
+                        or (Transitions.title eq "Répondre à un message")
+            ).map { row ->
+                Trace(
+                    row[Transitions.user],
+                    Date.from(LocalDateTime.of(row[Transitions.date], row[Transitions.time]).atZone(ZoneId.systemDefault()).toInstant()),
+                    Type.fromString(row[Transitions.title])
+                )
+            }
+        }
+        File("data.json").outputStream().use { out ->
+            json.encodeToStream(results, out)
         }
     }
-
-    File("data.json").outputStream().use { out ->
-        json.encodeToStream(results, out)
-    }
-}
+}.main(args)
 
 object Transitions : Table("transition") {
     val id = long("IDTran")
