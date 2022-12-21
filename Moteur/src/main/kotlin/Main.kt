@@ -4,6 +4,8 @@ import java.io.File
 import kotlinx.serialization.json.*
 import model.Trace
 import indicateur.Result
+import java.time.LocalDate
+import java.time.ZoneId
 import java.util.*
 
 private val json = Json { prettyPrint = true }
@@ -35,9 +37,9 @@ fun processData(data: List<Trace>): Result {
     val result = Result(mutableListOf(), mutableMapOf())
     data.forEach{ trace ->
         result.indicateurs.getOrPut(trace.user) { mutableListOf() }.also { activities ->
-            activities.find { it.date.isSameDay(trace.date) }?.let {
+            activities.find { it.date == trace.date.toLocalDate() }?.let {
                 it.value++
-            } ?: activities.add(Activity(trace.date, 1f))
+            } ?: activities.add(Activity(trace.date.toLocalDate(), 1f))
         }
     }
 
@@ -60,11 +62,4 @@ fun processData(data: List<Trace>): Result {
 
 fun String.trimQuotes() = replace(Regex("^\"|\"$"), "")
 
-fun Date.isSameDay(other: Date): Boolean {
-    val cal1 = Calendar.getInstance().also { it.time = this }
-    val cal2 = Calendar.getInstance().also { it.time = other }
-
-    return  cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR)
-            &&
-            cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
-}
+fun Date.toLocalDate(zone: ZoneId = ZoneId.systemDefault()): LocalDate = toInstant().atZone(zone).toLocalDate()
