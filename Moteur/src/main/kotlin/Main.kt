@@ -1,6 +1,5 @@
 import indicateur.Activity
 import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.decodeFromString
 import java.io.File
 import kotlinx.serialization.json.*
 import model.Trace
@@ -8,7 +7,7 @@ import indicateur.Result
 import java.util.*
 
 private val json = Json { prettyPrint = true }
-private const val defaultOuputFileName = "indicateurs.json"
+private const val DEFAULT_OUTPUT_NAME = "indicateurs.json"
 
 @OptIn(ExperimentalSerializationApi::class)
 fun main() {
@@ -21,11 +20,11 @@ fun main() {
     val result = processData(data)
 
     print("Chemin du fichier dans lequel seront stockés les indicateurs: ")
-    path = readln().trimQuotes().ifEmpty { defaultOuputFileName }
+    path = readln().trimQuotes().ifEmpty { DEFAULT_OUTPUT_NAME }
 
     var output = File(path)
 
-    if(output.exists() && output.isDirectory) output = File(path, defaultOuputFileName)
+    if(output.exists() && output.isDirectory) output = File(path, DEFAULT_OUTPUT_NAME)
 
     if(output.extension == "") output = File(output.name + ".json")
 
@@ -38,7 +37,7 @@ fun processData(data: List<Trace>): Result {
         result.indicateurs.getOrPut(trace.user) { mutableListOf() }.also { activities ->
             activities.find { it.date.isSameDay(trace.date) }?.let {
                 it.value++
-            } ?: activities.add(Activity(trace.date, 1))
+            } ?: activities.add(Activity(trace.date, 1f))
         }
     }
 
@@ -48,12 +47,12 @@ fun processData(data: List<Trace>): Result {
         activities.forEach { activity ->
             result.mean.find { it.date == activity.date }?.let {
                 it.value++
-            } ?: result.mean.add(Activity(activity.date, 1))
+            } ?: result.mean.add(Activity(activity.date, 1f))
         }
     }
 
     result.mean.forEach {
-        it.value /= result.indicateurs.size
+        it.value /= result.indicateurs.size.toFloat()
     }
 
     return result
