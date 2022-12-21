@@ -7,8 +7,8 @@
 
 	import { DataTable, Theme, ExpandableTile } from "carbon-components-svelte"
 	import Titlebar from '$lib/Titlebar.svelte'
-	//TODO set min window size
 	//TODO lazy load indicators
+	//TODO custom theme
 
 	let theme = "g90";
 </script>
