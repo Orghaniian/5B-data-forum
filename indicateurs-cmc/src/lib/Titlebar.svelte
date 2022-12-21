@@ -16,16 +16,16 @@
 </script>
 
 <div on:click={appWindow.startDragging} data-tauri-drag-region class="titlebar">
-	<div on:click={() => (open = true)} class="titlebar-button" id="titlebar-about">
+	<div on:click={() => (open = true)} class="titlebar-button" id="titlebar-about" on:keydown on:keyup on:keypress>
 		<About />
 	</div>
 	<span on:click={appWindow.startDragging} class='title noselect'>Indicateurs CMC</span>
-	<div on:click={appWindow.minimize} class="titlebar-button" id="titlebar-minimize">
+	<div on:click={appWindow.minimize} class="titlebar-button" id="titlebar-minimize" on:keydown on:keyup on:keypress>
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
 			<rect width="10" height="1" x="3" y="8" fill-rule="evenodd"/>
 		</svg>
 	</div>
-	<div on:click={maximize} class="titlebar-button" id="titlebar-maximize">
+	<div on:click={maximize} class="titlebar-button" id="titlebar-maximize" on:keydown on:keyup on:keypress>
 		{#if isMaximized}
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
 				<g fill-rule="evenodd">
@@ -39,7 +39,7 @@
 			</svg>
 		{/if}
 	</div>
-	<div on:click={appWindow.close} class="titlebar-button" id="titlebar-close">
+	<div on:click={appWindow.close} class="titlebar-button" id="titlebar-close" on:keydown on:keyup on:keypress>
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
 			<g fill-rule="evenodd" transform="translate(3 3)">
 				<rect width="13" height="1" x="-1.5" y="4.5" transform="rotate(45 5 5)"/>
