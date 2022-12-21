@@ -27,7 +27,7 @@
 		title: "Activité par utilisateur",
 		axes: {
 			bottom: {
-				title: "Temps",
+				title: "Date",
 				mapsTo: "date",
 				scaleType: ScaleTypes.TIME
 			},
@@ -38,7 +38,7 @@
 			}
 		},
 		curve: "curveMonotoneX",
-		height: "600px",
+		height: "inherit",
 		animations:true,
 		theme: ChartTheme.G90,
 		resizable: true,

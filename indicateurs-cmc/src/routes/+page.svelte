@@ -6,6 +6,7 @@
 	import Chart from '$lib/Chart.svelte'
 
 	import { DataTable, Theme, ExpandableTile } from "carbon-components-svelte"
+	import Titlebar from '$lib/Titlebar.svelte'
 
 	//TODO change title bar and scrollbar style
 	//TODO set min window size
@@ -13,9 +14,12 @@
 
 	let theme = "g90";
 </script>
+<Titlebar/>
 <Theme bind:theme />
 
-<Chart file={data}/>
+<div class='chart-wrapper'>
+	<Chart file={data}/>
+</div>
 <br>
 <br>
 <br>
@@ -53,5 +57,8 @@
 	}
 	:global(body) {
 			padding: 24px;
-	}
+			min-height: 100vh;
+			overflow: hidden;
+
+  }
 </style>

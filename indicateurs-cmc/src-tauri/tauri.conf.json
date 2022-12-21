@@ -12,7 +12,15 @@
   },
   "tauri": {
     "allowlist": {
-      "all": false
+      "all": false,
+      "window": {
+        "setMinSize": true,
+        "maximize": true,
+        "unmaximize": true,
+        "minimize": true,
+        "close": true,
+        "startDragging": true
+      }
     },
     "bundle": {
       "active": true,
@@ -56,11 +64,11 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 630,
         "resizable": true,
         "title": "Indicateurs CMC",
-        "width": 800,
-        "minHeight": 800
+        "width": 850,
+        "decorations": false
       }
     ]
   }
