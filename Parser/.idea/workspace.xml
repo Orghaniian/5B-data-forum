@@ -9,7 +9,10 @@
       <change beforePath="$PROJECT_DIR$/../Moteur/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Moteur/src/main/kotlin/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Moteur/src/main/kotlin/indicateur/Indicateur.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Moteur/src/main/kotlin/indicateur/Indicateur.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../indicateurs-cmc/src/lib/Chart.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../indicateurs-cmc/src/lib/Chart.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../indicateurs-cmc/src/lib/Titlebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../indicateurs-cmc/src/lib/Titlebar.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../indicateurs-cmc/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../indicateurs-cmc/src/routes/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../indicateurs.json" beforeDir="false" afterPath="$PROJECT_DIR$/../indicateurs.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
