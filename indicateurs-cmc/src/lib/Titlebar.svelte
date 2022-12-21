@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { appWindow } from '@tauri-apps/api/window'
+	import { DataTable, Modal } from 'carbon-components-svelte'
+
+	import About from "carbon-icons-svelte/lib/Help.svelte"
 
 	let isMaximized = false
 	appWindow.isMaximized().then(r => isMaximized = r)
@@ -8,9 +11,14 @@
 		if (isMaximized) appWindow.unmaximize().then(() => isMaximized = false)
 		else appWindow.maximize().then(() => isMaximized = true)
 	}
+
+	let open = false
 </script>
 
 <div on:click={appWindow.startDragging} data-tauri-drag-region class="titlebar">
+	<div on:click={() => (open = true)} class="titlebar-button" id="titlebar-about">
+		<About />
+	</div>
 	<span on:click={appWindow.startDragging} class='title noselect'>Indicateurs CMC</span>
 	<div on:click={appWindow.minimize} class="titlebar-button" id="titlebar-minimize">
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
@@ -40,6 +48,29 @@
 		</svg>
 	</div>
 </div>
+
+<Modal size="lg" passiveModal bind:open modalHeading="Proposition d'indicateur initiale" on:open on:close style='padding: 0'>
+	<DataTable
+		headers={[
+    { key: "name", value: "Indicateurs" },
+    { key: "what", value: "Quoi" },
+    { key: "forWho", value: "Pour qui" },
+    { key: "objective", value: "Objectif d’analyse" },
+    { key: "visu", value: "Visualisation" },
+    { key: "visuDescription", value: "Exemple visuel" },
+  ]}
+		rows={[
+    {
+			name: "Activité par utilisateur",
+			what: "Activité des utilisateurs, affichée par utilisateur sur une période donnée",
+			forWho: "Aux professeurs pour déterminer l’engagement des élèves et mesurer son évolution",
+			objective: "Permet aux professeur de réagir à une baisse d’activité, déterminer ce qui favorise l’activité des utilisateurs afin de l’encourager et féliciter les plus actifs",
+			visu: "Nombre des différentes interactions dans le temps",
+			visuDescription: "Un graphique avec en abscisse le temps et en ordonné une valeur d’activité pondérée à partir des messages envoyés, messages vus, de la fréquence de connexion, des réponses/citations/etc.",
+    }
+  ]}
+	/>
+</Modal>
 
 <style>
     .titlebar {
@@ -75,5 +106,10 @@
 				transform: translateX(50%) translateY(-50%);
 		}
 
-
+		#titlebar-about {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+		}
 </style>

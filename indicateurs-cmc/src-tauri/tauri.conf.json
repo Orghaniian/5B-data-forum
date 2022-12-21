@@ -20,6 +20,12 @@
         "minimize": true,
         "close": true,
         "startDragging": true
+      },
+      "fs": {
+        "readFile": true
+      },
+      "dialog": {
+        "open": true
       }
     },
     "bundle": {
@@ -68,7 +74,8 @@
         "resizable": true,
         "title": "Indicateurs CMC",
         "width": 850,
-        "decorations": false
+        "decorations": false,
+        "theme": "Dark"
       }
     ]
   }

@@ -1,6 +1,9 @@
 <script lang="ts">
 	import 'carbon-components-svelte/css/all.css'
 	import { LineChart } from '@carbon/charts-svelte'
+	import { open } from '@tauri-apps/api/dialog'
+	import { readTextFile } from '@tauri-apps/api/fs'
+
 	import {
 		ChartTheme,
 		type LineChartOptions,
@@ -8,25 +11,25 @@
 		ToolbarControlTypes,
 		ZoomBarTypes
 	} from '@carbon/charts/interfaces'
+	// import {
+	// 	ContextMenu,
+	// 	ContextMenuDivider,
+	// 	ContextMenuGroup,
+	// 	ContextMenuOption,
+	// } from "carbon-components-svelte"
+	// import ZoomIn from "carbon-icons-svelte/lib/ZoomIn.svelte";
 	import fr from 'date-fns/locale/fr'
+	import { type Data, parseData } from '$lib/indicateurs'
+	import type ChartDataEntry from '$lib/ChartDataEntry'
 
-	export let file
-
-	interface DataEntry {
-		group: string
-		value: number
-		date: string
+	async function loadFile(): Promise<ChartDataEntry[]> {
+		open({title: "Indicateurs", filters: [{name: "json", extensions: ["json"]}]}).then(async (filePath) => {
+			if(typeof filePath !== "string") return console.log("Aucun fichier sélectionné");
+			const json = await readTextFile(filePath)
+			console.log(parseData(JSON.parse(json)).length)
+			return parseData(JSON.parse(json))
+		})
 	}
-
-
-	const meanData: Array<DataEntry> = file.mean.map((entry) => ({user: "Moyenne", ...entry}))
-
-	const usersData: Array<DataEntry> = Object.keys(file.indicateurs).map(
-		(user) => file.indicateurs[user].map((entry) => ({user, ...entry}))
-	).flat()
-
-
-	const data = meanData.concat(usersData)
 
 	const isFullScreenEnabled =
 		typeof document !== 'undefined' &&
@@ -34,6 +37,10 @@
 			document['webkitFullscreenEnabled'] ||
 			document['mozFullScreenEnabled'] ||
 			document['msFullscreenEnabled']);
+
+	export let file: Data
+
+	let data: ChartDataEntry[] = parseData(file)
 
 	const options: LineChartOptions = {
 		title: "Activité par utilisateur",
@@ -85,7 +92,7 @@
 				{
 					type: ToolbarControlTypes.CUSTOM,
 					id: "load",
-					clickFunction: () => null,
+					clickFunction: async () => data = await loadFile(),
 					text: "Charger des indicateurs"
 				},
 				{
@@ -113,10 +120,25 @@
 			]
 		}
 	}
+
+
 </script>
 
+<!--TODO fix load new data-->
 <LineChart
 	theme="g90"
 	{data}
 	{options}
 />
+
+<!--<ContextMenu>-->
+<!--	<ContextMenuOption-->
+<!--		indented-->
+<!--		labelText="Zoom +"-->
+<!--		icon={ZoomIn}-->
+<!--	/>-->
+<!--	<ContextMenuOption indented kind="danger" labelText="Delete" />-->
+<!--</ContextMenu>-->
+
+
+
