@@ -36,10 +36,10 @@ fun main() {
 fun processData(data: List<Trace>): Result {
     val result = Result(mutableListOf(), mutableMapOf())
     data.forEach{ trace ->
-        result.indicateurs.getOrPut(trace.user) { mutableListOf() }.also { activities ->
-            activities.find { it.date == trace.date.toLocalDate() }?.let {
+        result.indicateurs.getOrPut(trace.user) { mutableListOf() }.also { activitiesOfUser ->
+            activitiesOfUser.find { it.date == trace.date.toLocalDate() }?.let {
                 it.value++
-            } ?: activities.add(Activity(trace.date.toLocalDate(), 1f))
+            } ?: activitiesOfUser.add(Activity(trace.date.toLocalDate(), 1f))
         }
     }
 
@@ -63,3 +63,5 @@ fun processData(data: List<Trace>): Result {
 fun String.trimQuotes() = replace(Regex("^\"|\"$"), "")
 
 fun Date.toLocalDate(zone: ZoneId = ZoneId.systemDefault()): LocalDate = toInstant().atZone(zone).toLocalDate()
+
+fun Trace.toActivity(): Activity = Activity(date.toLocalDate(), 1f)
