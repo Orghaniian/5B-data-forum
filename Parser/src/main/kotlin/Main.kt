@@ -14,7 +14,15 @@ private val json = Json { prettyPrint = true }
 
 @OptIn(ExperimentalSerializationApi::class)
 fun main(args: Array<String>) {
-    Database.connect("jdbc:mysql://localhost:3306/traceforumsql", user = "root", driver = "com.mysql.cj.jdbc.Driver")
+    val url = if(args.size == 1){
+        "jdbc:mysql://${args.first()}"
+    } else {
+        print("Default address selected: localhost:3306/traceforumsql")
+        print("to specify the database address give it as first argument")
+        print("Following this pattern '<address>:<port>/<databaseName>'")
+        "jdbc:mysql://localhost:3306/traceforumsql"
+    }
+    Database.connect(url, user = "root", driver = "com.mysql.cj.jdbc.Driver")
 
     val results = transaction {
         Transitions.slice(Transitions.date, Transitions.time, Transitions.title, Transitions.user).select(
