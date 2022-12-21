@@ -14,6 +14,7 @@ import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.core.UsageError
 
 private val json = Json { prettyPrint = true }
+private const val DEFAULT_OUTPUT_NAME = "data.json"
 
 @OptIn(ExperimentalSerializationApi::class)
 fun main(args: Array<String>) = object: CliktCommand() {
@@ -45,9 +46,22 @@ fun main(args: Array<String>) = object: CliktCommand() {
                 )
             }
         }
-        File("data.json").outputStream().use { out ->
+
+        promptOutputPath().outputStream().use { out ->
             json.encodeToStream(results, out)
         }
+    }
+
+    fun promptOutputPath(): File {
+        val path = prompt("Output file path", DEFAULT_OUTPUT_NAME) ?: DEFAULT_OUTPUT_NAME
+
+        var output = File(path)
+
+        if(output.exists() && output.isDirectory) output = File(path, DEFAULT_OUTPUT_NAME)
+
+        if(output.extension == "") output = File(output.name + ".json")
+
+        return output
     }
 }.main(args)
 
@@ -62,3 +76,5 @@ object Transitions : Table("transition") {
     val ref = long("RefTran")
     val comment = varchar("Commentaire", 100)
 }
+
+

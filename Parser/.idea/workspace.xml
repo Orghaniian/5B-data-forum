@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="65245773-b972-45e6-9492-d89e675b8a7e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../Moteur/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Moteur/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Moteur/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Moteur/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Moteur/src/main/kotlin/indicateur/Indicateur.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Moteur/src/main/kotlin/indicateur/Indicateur.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../indicateurs-cmc/src/lib/Chart.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../indicateurs-cmc/src/lib/Chart.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../indicateurs-cmc/src/lib/Titlebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../indicateurs-cmc/src/lib/Titlebar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../indicateurs-cmc/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../indicateurs-cmc/src/routes/+page.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../indicateurs.json" beforeDir="false" afterPath="$PROJECT_DIR$/../indicateurs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +101,7 @@
       <workItem from="1666598710255" duration="14000" />
       <workItem from="1666598936491" duration="825000" />
       <workItem from="1666604290505" duration="119000" />
-      <workItem from="1671579299059" duration="6433000" />
+      <workItem from="1671579299059" duration="7086000" />
     </task>
     <servers />
   </component>
