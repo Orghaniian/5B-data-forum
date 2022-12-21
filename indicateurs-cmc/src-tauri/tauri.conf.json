@@ -64,7 +64,7 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 630,
+        "height": 650,
         "resizable": true,
         "title": "Indicateurs CMC",
         "width": 850,

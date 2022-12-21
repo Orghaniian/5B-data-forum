@@ -11,6 +11,7 @@
 </script>
 
 <div on:click={appWindow.startDragging} data-tauri-drag-region class="titlebar">
+	<span class='title'>Indicateurs CMC</span>
 	<div on:click={appWindow.minimize} class="titlebar-button" id="titlebar-minimize">
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
 			<rect width="10" height="1" x="3" y="8" fill-rule="evenodd"/>
@@ -51,6 +52,7 @@
         top: 0;
         left: 0;
         right: 0;
+				z-index: 1000;
     }
     .titlebar-button {
         display: inline-flex;
@@ -63,6 +65,15 @@
         fill: white;
 		}
     .titlebar-button:hover {
-        background: #5bbec3;
+        background:#303436;
     }
+
+		.title {
+				position: absolute;
+				right: 50%;
+				top: 50%;
+				transform: translateX(50%) translateY(-50%);
+		}
+
+
 </style>

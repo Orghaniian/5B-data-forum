@@ -7,8 +7,6 @@
 
 	import { DataTable, Theme, ExpandableTile } from "carbon-components-svelte"
 	import Titlebar from '$lib/Titlebar.svelte'
-
-	//TODO change title bar and scrollbar style
 	//TODO set min window size
 	//TODO lazy load indicators
 
@@ -51,14 +49,23 @@
 	</div>
 </ExpandableTile>
 
+<span class='signature'>Julien Boulvert</span>
 <style>
 	:global(*) {
 			font-family: "Cascadia Mono", ui-monospace;
+			-ms-scrollbar-base-color: #0f62fe;
 	}
 	:global(body) {
-			padding: 24px;
-			min-height: 100vh;
-			overflow: hidden;
-
+      min-height: 100vh;
+      padding: 24px 24px 32px;
   }
+	.chart-wrapper {
+      padding-top: 12px;
+	}
+	.signature {
+			position: fixed;
+			bottom: 8px;
+			right: 8px;
+			opacity: 30%;
+	}
 </style>
