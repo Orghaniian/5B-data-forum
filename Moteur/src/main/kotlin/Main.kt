@@ -14,23 +14,16 @@ private const val DEFAULT_OUTPUT_NAME = "indicateurs.json"
 @OptIn(ExperimentalSerializationApi::class)
 fun main() {
     print("Chemin du fichier de données: ")
-    var path = readln().trimQuotes()
+    val path = readln().trimQuotes()
 
     val file = File(path)
     val data = Json.decodeFromStream<List<Trace>>(file.inputStream())
 
     val result = processData(data)
 
-    print("Chemin du fichier dans lequel seront stockés les indicateurs: ")
-    path = readln().trimQuotes().ifEmpty { DEFAULT_OUTPUT_NAME }
-
-    var output = File(path)
-
-    if(output.exists() && output.isDirectory) output = File(path, DEFAULT_OUTPUT_NAME)
-
-    if(output.extension == "") output = File(output.name + ".json")
-
-    json.encodeToStream(result, output.outputStream())//26976 lines
+    readOutputPath().outputStream().use { out ->
+        json.encodeToStream(result, out)
+    }
 }
 
 fun processData(data: List<Trace>): Result {
@@ -58,6 +51,19 @@ fun processData(data: List<Trace>): Result {
     }
 
     return result
+}
+
+fun readOutputPath(): File {
+    print("Chemin du fichier dans lequel seront stockés les indicateurs: ")
+    val path = readln().trimQuotes().ifEmpty { DEFAULT_OUTPUT_NAME }
+
+    var output = File(path)
+
+    if(output.exists() && output.isDirectory) output = File(path, DEFAULT_OUTPUT_NAME)
+
+    if(output.extension == "") output = File(output.name + ".json")
+
+    return output
 }
 
 fun String.trimQuotes() = replace(Regex("^\"|\"$"), "")

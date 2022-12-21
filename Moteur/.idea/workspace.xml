@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="25dc8314-7c9e-4e19-9468-e3ceee6183d9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/indicateur/Indicateur.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/indicateur/Indicateur.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Parser/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Parser/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../indicateurs-cmc/src/lib/Chart.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../indicateurs-cmc/src/lib/Chart.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../indicateurs-cmc/src/lib/Titlebar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../indicateurs-cmc/src/lib/Titlebar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../indicateurs-cmc/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../indicateurs-cmc/src/routes/+page.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../indicateurs.json" beforeDir="false" afterPath="$PROJECT_DIR$/../indicateurs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Parser/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Parser/src/main/kotlin/Main.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +121,7 @@
       <updated>1666597319302</updated>
       <workItem from="1666597322144" duration="5306000" />
       <workItem from="1666606608551" duration="425000" />
-      <workItem from="1671579307051" duration="9627000" />
+      <workItem from="1671579307051" duration="11039000" />
     </task>
     <servers />
   </component>
