@@ -7,20 +7,26 @@ import model.Trace
 import indicateur.Result
 
 private val json = Json { prettyPrint = true }
+private const val defaultOuputFileName = "indicateurs.json"
 
 @OptIn(ExperimentalSerializationApi::class)
-fun main(args: Array<String>) {
-    val path = if(args.isEmpty()) {
-        print("Chemin du fichier de données: ")
-        readln()
-    } else args.first()
+fun main() {
+    print("Chemin du fichier de données: ")
+    var path = readln().trimQuotes()
 
     val file = File(path)
     val data = Json.decodeFromStream<List<Trace>>(file.inputStream())
 
     val result = processData(data)
 
-    val output = File("indicateurs.json")
+    print("Chemin du fichier dans lequel seront stockés les indicateurs: ")
+    path = readln().trimQuotes().ifEmpty { defaultOuputFileName }
+
+    var output = File(path)
+
+    if(output.exists() && output.isDirectory) output = File(path, defaultOuputFileName)
+
+    if(output.extension == "") output = File(output.name + ".json")
 
     json.encodeToStream(result, output.outputStream())
 }
@@ -51,3 +57,5 @@ fun processData(data: List<Trace>) : Result {
 
     return result
 }
+
+fun String.trimQuotes() = replace(Regex("^\"|\"$"), "")
