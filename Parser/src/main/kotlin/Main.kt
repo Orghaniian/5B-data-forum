@@ -20,10 +20,12 @@ private const val DEFAULT_OUTPUT_NAME = "data.json"
 fun main(args: Array<String>) = object: CliktCommand() {
     override fun run() {
         println("Database connexion informations")
-        val dbConfig: DatabaseConfig = DatabaseConfig.Builder.fromPrompt()
+        val url = promptURL()
+        val user = prompt("Username", "root")
+        val password = prompt("Password", "")
 
-        println("Connecting to ${dbConfig.url}")
-        dbConfig.connect()
+        println("Connecting to ${url}")
+        Database.connect(url, user = user!!, password = password ?: "", driver = "com.mysql.cj.jdbc.Driver")
 
         val results = transaction {
             Transitions.slice(Transitions.date, Transitions.time, Transitions.title, Transitions.user).select(
@@ -56,29 +58,15 @@ fun main(args: Array<String>) = object: CliktCommand() {
         return output
     }
 
-    inner class DatabaseConfig(
-        val hostname: String,
-        val port: String,
-        val databaseName: String,
-        val user: String?,
-        val password: String?
-    ) {
+    fun promptURL(): String {
+        val hostname = prompt("Hostname", "localhost") ?: "localhost"
+        val port = prompt("Port", "3306") {
+            if(!it.all(Char::isDigit)) throw UsageError("The port can only contains digits")
+            else it
+        } ?: "3306"
+        val databaseName = prompt("Database Name", "traceforumsql") ?: "traceforumsql"
 
-        val url: String by lazy { "jdbc:mysql://$hostname:$port/$databaseName" }
-
-        fun connect(): Database = Database.connect(url, user = user!!, password = password ?: "", driver = "com.mysql.cj.jdbc.Driver")
-        companion object Builder {
-            fun fromPrompt(): DatabaseConfig = DatabaseConfig(
-                hostname = prompt("Hostname", "localhost") ?: "localhost",
-                port = prompt("Port", "3306") {
-                    if(!it.all(Char::isDigit)) throw UsageError("The port can only contains digits")
-                    else it
-                } ?: "3306",
-                databaseName = prompt("Database Name", "traceforumsql") ?: "traceforumsql",
-                user = prompt("Username", "root"),
-                password = prompt("Password", ""),
-            )
-        }
+        return "jdbc:mysql://$hostname:$port/$databaseName"
     }
 
 }.main(args)
