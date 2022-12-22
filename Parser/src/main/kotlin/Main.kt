@@ -17,7 +17,7 @@ private val json = Json { prettyPrint = true }
 private const val DEFAULT_OUTPUT_NAME = "data.json"
 
 @OptIn(ExperimentalSerializationApi::class)
-fun main() = object: CliktCommand() {
+fun main(args: Array<String>) = object: CliktCommand() {
     override fun run() {
         println("Database connexion informations")
         val url = promptURL()
