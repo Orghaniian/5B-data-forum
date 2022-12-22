@@ -12,17 +12,24 @@ private val json = Json { prettyPrint = true }
 private const val DEFAULT_OUTPUT_NAME = "indicateurs.json"
 
 @OptIn(ExperimentalSerializationApi::class)
-fun main() {
-    print("Chemin du fichier de données: ")
-    val path = readln().trimQuotes()
+fun main(args: Array<String>) {
+    val path = if(args.size == 1) {
+        args[0].trimQuotes()
+    } else {
+        print("Chemin du fichier de données: ")
+        readln().trimQuotes()
+    }
 
     val file = File(path)
     val data = Json.decodeFromStream<List<Trace>>(file.inputStream())
 
     val result = processData(data)
 
-    readOutputPath().outputStream().use { out ->
-        json.encodeToStream(result, out)
+    readOutputPath().run {
+        outputStream().use { out ->
+            json.encodeToStream(result, out)
+        }
+        print(absolutePath)
     }
 }
 
