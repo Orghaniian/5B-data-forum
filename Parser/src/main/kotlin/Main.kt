@@ -20,19 +20,11 @@ private const val DEFAULT_OUTPUT_NAME = "data.json"
 fun main(args: Array<String>) = object: CliktCommand() {
     override fun run() {
         println("Database connexion informations")
-        val hostname = prompt("Hostname", "localhost")
-        val port = prompt("Port", "3306") {
-            if(!it.all(Char::isDigit)) throw UsageError("The port can only contains digits")
-            else it
-        }
-        val databaseName = prompt("Database Name", "traceforumsql")
-        val user = prompt("Username", "root")
-        val password = prompt("Password", "")
+        val dbConfig: DatabaseConfig = DatabaseConfig.Builder.fromPrompt()
 
-        val url = "jdbc:mysql://$hostname:$port/$databaseName"
-
-        println("Connecting to $url")
-        Database.connect(url, user = user!!, password = password ?: "", driver = "com.mysql.cj.jdbc.Driver")
+        println("Connecting to ${dbConfig.url}")
+        dbConfig.connect()
+        
         val results = transaction {
             Transitions.slice(Transitions.date, Transitions.time, Transitions.title, Transitions.user).select(
                 Transitions.title eq "Connexion"
@@ -63,6 +55,32 @@ fun main(args: Array<String>) = object: CliktCommand() {
 
         return output
     }
+
+    inner class DatabaseConfig(
+        val hostname: String,
+        val port: String,
+        val databaseName: String,
+        val user: String?,
+        val password: String?
+    ) {
+
+        val url: String by lazy { "jdbc:mysql://$hostname:$port/$databaseName" }
+
+        fun connect(): Database = Database.connect(url, user = user!!, password = password ?: "", driver = "com.mysql.cj.jdbc.Driver")
+        companion object Builder {
+            fun fromPrompt(): DatabaseConfig = DatabaseConfig(
+                hostname = prompt("Hostname", "localhost") ?: "localhost",
+                port = prompt("Port", "3306") {
+                    if(!it.all(Char::isDigit)) throw UsageError("The port can only contains digits")
+                    else it
+                } ?: "3306",
+                databaseName = prompt("Database Name", "traceforumsql") ?: "traceforumsql",
+                user = prompt("Username", "root"),
+                password = prompt("Password", ""),
+            )
+        }
+    }
+
 }.main(args)
 
 object Transitions : Table("transition") {
@@ -76,5 +94,4 @@ object Transitions : Table("transition") {
     val ref = long("RefTran")
     val comment = varchar("Commentaire", 100)
 }
-
 
