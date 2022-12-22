@@ -10,7 +10,7 @@
 
 ![myChart](https://user-images.githubusercontent.com/57568980/208807429-08a6eafa-5506-46e4-8493-15660157b158.jpg)
 
-![image](https://user-images.githubusercontent.com/57568980/209232567-99c5ab96-a52f-46ed-aec6-c297adf60fc5.png)
+![image](https://user-images.githubusercontent.com/57568980/209233356-3bbcf537-5b8f-4b06-a981-ea714b03ae81.png)
 
 
 ## Visualisation
