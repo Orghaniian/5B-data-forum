@@ -13,13 +13,14 @@
 	}
 
 	let open = false
+	export let title: string
 </script>
 
 <div on:click={appWindow.startDragging} data-tauri-drag-region class="titlebar">
 	<div on:click={() => (open = true)} class="titlebar-button" id="titlebar-about" on:keydown on:keyup on:keypress>
 		<About />
 	</div>
-	<span on:click={appWindow.startDragging} class='title noselect'>Indicateurs CMC</span>
+	<span on:click={appWindow.startDragging} class='title noselect'>{title}</span>
 	<div on:click={appWindow.minimize} class="titlebar-button" id="titlebar-minimize" on:keydown on:keyup on:keypress>
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
 			<rect width="10" height="1" x="3" y="8" fill-rule="evenodd"/>

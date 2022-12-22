@@ -11,12 +11,13 @@
 	//TODO custom theme
 
 	let theme = "g90";
+	let title = "Indicateurs CMC"
 </script>
-<Titlebar/>
+<Titlebar {title}/>
 <Theme bind:theme />
 
 <div class='chart-wrapper'>
-	<Chart file={data}/>
+	<Chart bind:windowTitle={title} file={data}/>
 </div>
 <br>
 <br>
