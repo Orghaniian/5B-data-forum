@@ -92,6 +92,7 @@
         align-items: center;
         width: 30px;
         height: 30px;
+				cursor: pointer;
     }
 		.titlebar-button > svg {
         fill: white;
