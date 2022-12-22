@@ -24,7 +24,7 @@ fun main(args: Array<String>) = object: CliktCommand() {
 
         println("Connecting to ${dbConfig.url}")
         dbConfig.connect()
-        
+
         val results = transaction {
             Transitions.slice(Transitions.date, Transitions.time, Transitions.title, Transitions.user).select(
                 Transitions.title eq "Connexion"
