@@ -5,6 +5,8 @@
   - [Naviguer](#naviguer)
   - [Ajouter des évènements](#ajouter-des-évènements)
   - [Charger un fichier généré par le moteur](#charger-un-fichier-généré-par-le-moteur)
+- [Parser](#parser)
+- [Moteur](#moteur)
 
 ![myChart](https://user-images.githubusercontent.com/57568980/208807429-08a6eafa-5506-46e4-8493-15660157b158.jpg)
 
@@ -32,3 +34,30 @@ Il est possible de charger un fichier d'indicateurs différent produit par le mo
 
 https://user-images.githubusercontent.com/57568980/209206973-fe80baa2-fbf3-4a82-9d3f-8b587e858860.mp4
 
+## Parser
+
+Le parser extrait les données de la base de données pour les formattées conformément au modèle accepté par le moteur
+
+Pour extraire les données de la base de données il faut utiliser le parser qui se trouve dans .\dist, pour celà deux possibilitées:
+- en executant le jar directement: 
+```powershell
+java -jar .\Parser.jar
+```
+- en executant le fichier powershell, soit en double cliquant dessus soit avec la commande:
+```powershell
+.\Parser
+```
+
+## Moteur
+
+Le moteur calcule les indicateurs à partir des données formattées par le parser
+
+Pour calculer les indicateurs à partir des données formattées il faut utiliser le moteur qui se trouve dans .\dist, pour celà deux possibilitées:
+- en executant le jar directement: 
+```powershell
+java -jar .\Moteur.jar
+```
+- en executant le fichier powershell, soit en double cliquant dessus soit avec la commande:
+```powershell
+.\Moteur
+```
