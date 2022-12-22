@@ -65,7 +65,7 @@
 			name: "Activité par utilisateur",
 			what: "Activité des utilisateurs, affichée par utilisateur sur une période donnée",
 			forWho: "Aux professeurs pour déterminer l’engagement des élèves et mesurer son évolution",
-			objective: "Permet aux professeur de réagir à une baisse d’activité, déterminer ce qui favorise l’activité des utilisateurs afin de l’encourager et féliciter les plus actifs",
+			objective: "Permet aux professeur de réagir à une baisse d’activité, déterminer ce qui favorise l’activité des utilisateurs afin de l’encourager et féliciter les plus actifs.\nL'ajout d'évènements permet de repérer les causes des variations d'activité.",
 			visu: "Nombre des différentes interactions dans le temps",
 			visuDescription: "Un graphique avec en abscisse le temps et en ordonné une valeur d’activité pondérée à partir des messages envoyés, messages vus, de la fréquence de connexion, des réponses/citations/etc.",
     }

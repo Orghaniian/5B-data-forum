@@ -8,6 +8,7 @@
 		ChartTheme,
 		type LineChartOptions,
 		ScaleTypes,
+		TickRotations,
 		ToolbarControlTypes,
 		type ToolbarOptions,
 		ZoomBarTypes
@@ -23,10 +24,10 @@
 	import { type Data, parseData } from '$lib/indicateurs'
 	import type ChartDataEntry from '$lib/ChartDataEntry'
 	import type DateThreshold from '$lib/DateThreshold'
-	import { Button, DatePicker, DatePickerInput, FluidForm, TextInput } from 'carbon-components-svelte'
+	import { Button, FluidForm, TextInput } from 'carbon-components-svelte'
 	import { DateInput, type Locale, localeFromDateFnsLocale } from 'date-picker-svelte'
 	import ColorPicker from '$lib/ColorPicker.svelte'
-	import Add from "carbon-icons-svelte/lib/Add.svelte";
+	import Add from 'carbon-icons-svelte/lib/Add.svelte'
 
 
 	export let file: Data
@@ -99,7 +100,7 @@
 				title: "Date",
 				mapsTo: "date",
 				scaleType: ScaleTypes.TIME,
-				thresholds: dateTresholds
+				thresholds: dateTresholds,
 			},
 			left: {
 				title: "Activité",
@@ -111,7 +112,6 @@
 		height: "inherit",
 		animations:true,
 		theme: ChartTheme.G90,
-		resizable: true,
 		zoomBar: {
 			top: {
 				enabled: true,
@@ -150,14 +150,13 @@
 	}
 </script>
 <LineChart
-	theme="g90"
 	{data}
 	{options}
 />
 
 <div class='new_event'>
 
-	<div class='row'>
+	<div class='row' style='align-items: center'>
 		<h3>Ajouter un évènement</h3>
 		<DateInput
 			bind:value={newDate}
@@ -191,8 +190,11 @@
 
 <style>
 	:global(:root) {
-      --date-picker-background: #1b1e27;
       --date-picker-foreground: #f7f7f7;
+      --date-picker-background: #1D2021;
+      --date-picker-selected-background: rgba(255, 255, 255, 0.1);
+      --date-picker-highlight-border: rgba(255, 255, 255, .7);
+      --date-picker-highlight-shadow: transparent;
 	}
 
 	.new_event {

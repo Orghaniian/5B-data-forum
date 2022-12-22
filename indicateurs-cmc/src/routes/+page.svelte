@@ -10,18 +10,41 @@
 	//TODO lazy load indicators
 	//TODO custom theme
 
+	const colors = {
+		"background": "#1D2021",
+		"black": "#1D2021",
+		"blue": "#458588",
+		"brightBlack": "#928374",
+		"brightBlue": "#458588",
+		"brightCyan": "#689D6A",
+		"brightGreen": "#98971A",
+		"brightPurple": "#B16286",
+		"brightRed": "#CC241D",
+		"brightWhite": "#EBDBB2",
+		"brightYellow": "#D79921",
+		"cursorColor": "#EBDBB2",
+		"cyan": "#689D6A",
+		"foreground": "#EBDBB2",
+		"green": "#98971A",
+		"purple": "#B16286",
+		"red": "#CC241D",
+		"selectionBackground": "#665C54",
+		"white": "#EBDBB2",
+		"yellow": "#D79921"
+	}
+
 	let theme = "g90";
 	let title = "Indicateurs CMC"
 </script>
 <Titlebar {title}/>
-<Theme bind:theme />
+<Theme
+	bind:theme
+	tokens={{}}
+/>
 
 <div class='chart-wrapper'>
 	<Chart file={data}/>
 </div>
-<br>
-<br>
-<br>
 
 <span class='signature'>Julien Boulvert</span>
 <style>
@@ -42,7 +65,7 @@
 			position: fixed;
 			bottom: 8px;
 			right: 8px;
-			opacity: 30%;
+			opacity: 35%;
 	}
 
   :global(.noselect) {
