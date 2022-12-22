@@ -85,7 +85,7 @@
 	let dateTresholds: DateThreshold[] = [
 	]
 
-	$: options = {
+	$:options = {
 		title: "Activité par utilisateur",
 		axes: {
 			bottom: {
