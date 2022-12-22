@@ -1,5 +1,11 @@
 # 5B-data-forum
 
+# Table des matières
+- [Visualisation](#visualisation)
+  - [Naviguer](#naviguer)
+  - [Ajouter des évènements](#ajouter-des-évènements)
+  - [Charger un fichier généré par le moteur](#charger-un-fichier-généré-par-le-moteur)
+
 ![myChart](https://user-images.githubusercontent.com/57568980/208807429-08a6eafa-5506-46e4-8493-15660157b158.jpg)
 
 
