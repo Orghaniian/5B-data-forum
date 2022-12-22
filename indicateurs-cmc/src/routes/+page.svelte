@@ -17,7 +17,7 @@
 <Theme bind:theme />
 
 <div class='chart-wrapper'>
-	<Chart bind:windowTitle={title} file={data}/>
+	<Chart file={data}/>
 </div>
 <br>
 <br>
