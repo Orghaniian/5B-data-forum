@@ -10,10 +10,10 @@
 
 	// Our color set
 	let values = [
-		['#DAAFE9', '#C7DBF5', '#AAD5FB', '#ADE5DA', '#B0EDC3', '#abf8a2', '#FDF0A4', '#F8D6A2', '#f8a2a2'],
-		['#C47ADA', '#90BAEE', '#75BAFA', '#72D5BF', '#73DE8C', '#77f569', '#FBE66E', '#F5B969', '#f56969'],
-		['#AE44B7', '#5E7ABC', '#5E7ABC', '#4DACA9', '#63B75A', '#51ec40', '#EDBD4A', '#EC9740', '#ec4040'],
-		['#501B87', '#021B6B', '#0C2794', '#337277', '#2F6A52', '#2bad27', '#AE802F', '#AD6127', '#ad2727']
+		['#DAAFE9', '#AAD5FB', '#ADE5DA', '#B0EDC3', '#abf8a2', '#FDF0A4', '#F8D6A2', '#f8a2a2'],
+		['#C47ADA', '#75BAFA', '#72D5BF', '#73DE8C', '#77f569', '#FBE66E', '#F5B969', '#f56969'],
+		['#AE44B7', '#5E7ABC', '#4DACA9', '#63B75A', '#51ec40', '#EDBD4A', '#EC9740', '#ec4040'],
+		['#501B87', '#0C2794', '#337277', '#2F6A52', '#2bad27', '#AE802F', '#AD6127', '#ad2727']
   ]
 
 	// Our color set
@@ -225,7 +225,7 @@
 	}
 	
 	.values-dropdown-grid {
-		grid-template-columns: repeat(9, 24px);
+		grid-template-columns: repeat(8, 24px);
 		grid-template-rows: 24px 24px;
 		grid-gap: 10px;
 		display: grid;
