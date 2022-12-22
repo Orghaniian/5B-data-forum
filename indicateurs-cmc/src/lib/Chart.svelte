@@ -8,18 +8,10 @@
 		ChartTheme,
 		type LineChartOptions,
 		ScaleTypes,
-		TickRotations,
 		ToolbarControlTypes,
 		type ToolbarOptions,
 		ZoomBarTypes
 	} from '@carbon/charts/interfaces'
-	// import {
-	// 	ContextMenu,
-	// 	ContextMenuDivider,
-	// 	ContextMenuGroup,
-	// 	ContextMenuOption,
-	// } from "carbon-components-svelte"
-	// import ZoomIn from "carbon-icons-svelte/lib/ZoomIn.svelte";
 	import fr from 'date-fns/locale/fr'
 	import { type Data, parseData } from '$lib/indicateurs'
 	import type ChartDataEntry from '$lib/ChartDataEntry'
@@ -176,17 +168,6 @@
 		<Button on:click={addDateThreshold} iconDescription="Ajouter" disabled={!newLabel} icon={Add} kind="tertiary"/>
 	</div>
 </div>
-
-
-<!--<ContextMenu>-->
-<!--	<ContextMenuOption-->
-<!--		indented-->
-<!--		labelText="Zoom +"-->
-<!--		icon={ZoomIn}-->
-<!--	/>-->
-<!--	<ContextMenuOption indented kind="danger" labelText="Delete" />-->
-<!--</ContextMenu>-->
-
 
 <style>
 	:global(:root) {
